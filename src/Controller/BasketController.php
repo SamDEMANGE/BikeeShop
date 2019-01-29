@@ -19,7 +19,7 @@ class BasketController extends AbstractController
     public function index()
     {
         return $this->render('Basket.html.twig', [
-            'controller_name' => 'Basket',
+            'controller_name' => 'BasketController',
         ]);
     }
 
