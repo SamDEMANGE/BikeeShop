@@ -8,9 +8,25 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController
+/**
+ * @Route("", name="")
+ */
+
+class HomeController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function index()
+    {
+        return $this->render('homepage.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 
 
 
