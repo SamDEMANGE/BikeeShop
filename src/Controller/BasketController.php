@@ -8,16 +8,18 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BasketController extends AbstractController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/Basket", name="Basket")
      */
     public function index()
     {
-        return $this->render('homepage.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('Basket.html.twig', [
+            'controller_name' => 'Basket',
         ]);
     }
 
