@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/store", name="store_")
  */
-class ProduitController extends AbstractController
+class ProductController extends AbstractController
 {
 
     /**
