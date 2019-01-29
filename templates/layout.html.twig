@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{  path('homepage') }}">BikeeShop</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <!-- <a href="{{  path('homepage') }}">Présentation</a> !-->
+                    </li>
+                    <li>
+                        <!-- <a href="{{  path('homepage') }}" >Nos produits</a>!-->
+                    </li>
+                    <li>
+                        <!--<a href="{{  path('homepage') }}" >Contact</a>!-->
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" placeholder="Recherche" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">OK</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{%  endblock %}
+
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer -->
+    <footer>
+        <p>Copyright &copy; BikeeShop {{ "now"|date("Y") }}</p>
+    </footer>
+{%  endblock %}
+
