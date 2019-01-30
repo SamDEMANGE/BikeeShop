@@ -1,0 +1,38 @@
+{% extends './layout.html.twig' %}
+{% block title %}{{ parent() }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Panier</h2>
+            <div id="panier">
+                {% for items in nuberItem %}
+                    <div>
+                        <img src="{{ image[items] }}"
+                        <h5 class="titre">{{ title[items] }}</h5>
+                        <p>{{ detail[items] }}</p>
+                        <h5 class="prix">{{ prix[items] }}</h5>
+                        <select id="select{{ items }}">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                        <a id="suppr{{ items }}">Supprimer l'article</a>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+            </div>
+        <input type="button" value="Commander">
+
+        {% block footer %}{{ parent() }}{% endblock %}
+    </div>
+{% endblock %}
