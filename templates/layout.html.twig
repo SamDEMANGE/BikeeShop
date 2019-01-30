@@ -39,14 +39,18 @@
         </div>
     </nav>
 
-    {% block content %}{%  endblock %}
 
-{% endblock %}
+    <div class="container">
+        {% block content %}{% endblock %}
+        <hr>
 
-{% block footer %}
-    <!-- Footer -->
-    <footer>
-        <p>Copyright &copy; BikeeShop {{ "now"|date("Y") }}</p>
-    </footer>
+        <footer>
+
+            <p>Copyright &copy; BikeeShop {{ "now"|date("Y") }}</p>
+
+        </footer>
+    </div>
+
+
 {%  endblock %}
 

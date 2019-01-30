@@ -1,8 +1,8 @@
-{% extends './layout.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block title %}{{ parent() }}{% endblock %}
 {% block content %}
     <!-- Page Content -->
-    <div class="container">
+
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -161,8 +161,8 @@
 
         </div>
 
-        <hr/>
 
-        {% block footer %}{{ parent() }}{% endblock %}
-    </div>
+
+
+
 {% endblock %}
