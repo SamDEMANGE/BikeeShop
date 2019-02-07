@@ -22,4 +22,13 @@ class ProductController extends AbstractController
         return $this->render('store/product-list.html.twig');
     }
 
+    /**
+     * @Route("/product/details", name="product_details")
+     */
+    public function prodDetail(){
+
+        return $this->render('store/product-detail.html.twig');
+    }
+
+
 }
