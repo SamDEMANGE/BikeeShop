@@ -1,0 +1,123 @@
+{% extends 'layout.html.twig' %}
+
+
+
+
+{% block title %}
+    Produit  |  {{ parent() }}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+    <!-- Page Content -->
+    <!--  <div class="container"> !-->
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Nos Catégories</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">Toutes les catégories</a>
+                <a href="#" class="list-group-item">Cat 1</a>
+                <a href="#" class="list-group-item">Cat 2</a>
+                <a href="#" class="list-group-item">Cat 3</a>
+                <a href="#" class="list-group-item">Cat 4</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <p class="lead">Fiche descriptive <b></b> <a href="" class="btn btn-default pull-right">Retour aux produits</a></p>
+
+            <div class="row">
+
+                <div class="thumbnail">
+                    <img class="img-responsive" src="" alt="prod">
+                    <div class="caption-full">
+                        <h4 class="pull-right"><span class="badge">prix</span></h4>
+                        <h3>Nom</h3>
+                        <p>Description</p>
+                        <p>
+                            Une description longue du produit sera affichée à cet endroit :
+
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+                <div class="well">
+
+                    <p class="pull-right label label-success">Actuellement 3 avis</p>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="label label-info">Prénom Nom</span>
+                            <span class="label label-default pull-right">28/01/2015</span>
+                            <p>Un commentaire sur le produit, rédigé par un client, sera affiché à cet endroit.</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="label label-info">Prénom Nom</span>
+                            <span class="label label-default pull-right">28/01/2015</span>
+                            <p>Un commentaire sur le produit, rédigé par un client, sera affiché à cet endroit.</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="label label-info">Prénom Nom</span>
+                            <span class="label label-default pull-right">28/01/2015</span>
+                            <p>Un commentaire sur le produit, rédigé par un client, sera affiché à cet endroit.</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Votre nom</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Votre avis</label>
+                                <textarea class="form-control" name="comment" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info">Envoyer mon avis</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--     <hr> !-->
+
+
+
+
+    <!--  </div> !-->
+    <!-- /.container -->
+
+
+
+{% endblock %}
+
+
+
+
+
