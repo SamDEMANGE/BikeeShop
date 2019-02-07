@@ -1,4 +1,4 @@
-{% extends './layout.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block title %}{{ parent() }}{% endblock %}
 {% block content %}
     <div class="container">
@@ -34,5 +34,5 @@
         <input type="button" value="Commander">
 
         {% block footer %}{{ parent() }}{% endblock %}
-    </div>
+
 {% endblock %}
