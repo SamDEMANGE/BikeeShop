@@ -1,0 +1,14 @@
+<div class="col-md-3">
+
+    <p class="lead">Nos catégories </p>
+    <div class="list-group">
+        <a href="{{ path('store_product_list', {'categorie':'all'}) }}"
+           class="list-group-item {% if urlPage==url('store_product_list', {'categorie':'all'}) or ('all' in urlPage) %}active {% endif %}">Toutes les catégories</a>
+        {% for categ in categs %}
+            <a href="{{path('store_product_list',{'categorie':categ.slug })}}"
+               class="list-group-item {% if urlPage==url('store_product_list',{'categorie':categ.slug } )
+                   or categA==categ.slug
+               %}active {% endif %}">{{ categ.nom }}</a>
+        {% endfor %}
+    </div>
+</div>

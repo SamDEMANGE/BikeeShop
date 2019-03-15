@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BasketController extends AbstractController
 {
     /**
-     * @Route("/Basket", name="Basket")
+     * @Route("/basket", name="basket")
      */
     public function index()
     {
