@@ -29,9 +29,9 @@
                     </li>
                 </ul>
 
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" method="get" action="{{ path('store_search') }}">
                     <div class="form-group">
-                        <input type="text" placeholder="Recherche" class="form-control">
+                        <input name="keyword" type="text" placeholder="Recherche" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-success">OK</button>
                 </form>

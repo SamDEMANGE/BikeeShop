@@ -20,10 +20,12 @@ class ProductController extends AbstractController
 {
 
     private $client;
+    private $urlAPI;
 
     public function __construct()
     {
         $this->client=new Client();
+        $this->urlAPI='http://localhost/LP/BikeeShopAPI/public/';
     }
 
 
@@ -44,22 +46,22 @@ class ProductController extends AbstractController
             $page=$request->query->get('page');
         }
 
-       $produit_list= $this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/produits/'.$categorie.'/'.
+       $produit_list= $this->client->request('GET', $this->urlAPI.'produits/'.$categorie.'/'.
           $page
 
        );
 
-       $count_produit=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/products/count/'.$categorie);
+       $count_produit=$this->client->request('GET', $this->urlAPI.'products/count/'.$categorie);
 
-       $categ_list=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/categories/'
+   //    $categ_list=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/categories/'
+
+     //  );
+
+       $categ=$this->client->request('GET', $this->urlAPI.'categorie/'.$categorie
 
        );
 
-       $categ=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/categorie/'.$categorie
-
-       );
-
-        $categs= json_decode($categ_list->getBody());
+       // $categs= json_decode($categ_list->getBody());
 
        $produits= json_decode($produit_list->getBody());
 
@@ -76,7 +78,7 @@ class ProductController extends AbstractController
             [
                 'produits'=>$produits,
                 'urlPage'=>$urlPage,
-                'categs'=>$categs,
+               // 'categs'=>$categs,
                 'categA'=>$categorie,
                 'categ'=>$categname,
                 'pages_count'=>$pages_count,
@@ -94,7 +96,7 @@ class ProductController extends AbstractController
     public function categList(string $urlPage, string $categ){
 
 
-        $categ_list=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/categories/'
+        $categ_list=$this->client->request('GET', $this->urlAPI.'categories/'
 
         );
 
@@ -122,7 +124,7 @@ class ProductController extends AbstractController
      */
     public function prodDetail(int $id, Request $request){
 
-        $produit=$this->client->request('GET','http://localhost/LP/BikeeShopAPI/public/produits/'.$id.'/details' );
+        $produit=$this->client->request('GET',$this->urlAPI.'produit/'.$id.'/details' );
         $produit= json_decode($produit->getBody());
 
         $urlPage=$request->getUri();
@@ -133,6 +135,30 @@ class ProductController extends AbstractController
             'produit'=>$produit,
             'urlPage'=>$urlPage,
         ]);
+    }
+
+
+    /**
+     * @Route("/product/search", name="search")
+     * @param Request $request
+     * @return Response
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function rechercheProduit(Request $request){
+        $keyword=$request->query->get('keyword');
+        $searchproduit=$this->client->request('GET',$this->urlAPI.'produit/search?keyword='.$keyword );
+
+
+
+        $produits=json_decode($searchproduit->getBody());
+
+        return $this->render('store/product-search.html.twig',
+            [
+                'keyword'=>$keyword,
+                'produits'=>$produits,
+            ]);
+
+
     }
 
 
