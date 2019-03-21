@@ -10,6 +10,9 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BasketController extends AbstractController
 {
@@ -23,4 +26,30 @@ class BasketController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @param string $urlPage
+     * @param string $categ
+     * @return Response
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function categList(string $urlPage, string $categ){
+
+
+        $panier_list=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/list-panier/'
+
+        );
+
+        $produits= json_decode($panier_list->getBody());
+
+
+
+        return $this->render('store/basket.html.twig', [
+
+            'produits'=>$produits,
+
+
+        ]);
+    }
 }
+
