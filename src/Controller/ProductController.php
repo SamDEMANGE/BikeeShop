@@ -53,15 +53,12 @@ class ProductController extends AbstractController
 
        $count_produit=$this->client->request('GET', $this->urlAPI.'products/count/'.$categorie);
 
-   //    $categ_list=$this->client->request('GET', 'http://localhost/LP/BikeeShopAPI/public/categories/'
-
-     //  );
 
        $categ=$this->client->request('GET', $this->urlAPI.'categorie/'.$categorie
 
        );
 
-       // $categs= json_decode($categ_list->getBody());
+
 
        $produits= json_decode($produit_list->getBody());
 
@@ -78,7 +75,7 @@ class ProductController extends AbstractController
             [
                 'produits'=>$produits,
                 'urlPage'=>$urlPage,
-               // 'categs'=>$categs,
+
                 'categA'=>$categorie,
                 'categ'=>$categname,
                 'pages_count'=>$pages_count,

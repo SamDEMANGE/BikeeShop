@@ -44,8 +44,6 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/", name="homepage")
-     * @param string $urlPage
-     * @param string $categ
      * @return Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
