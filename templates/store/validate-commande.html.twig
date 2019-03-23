@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block title %}
+    Valider commande | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+
+        {{ include('flash_messages.html.twig') }}
+        <form action="{{ path('edit_panier') }}" method="post">
+
+        <div class="form-group" >
+
+
+
+        <label class="label">Nom</label>
+        <input type="text" name="nom" class="form-control" placeholder="Nom" value="{{ app.request.request.get('nom') }}"/>
+
+
+
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Prénom</label>
+            <input type="text" name="prenom" class="form-control" placeholder="Prénom" value="{{ app.request.request.get('prenom') }}"/>
+
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Email</label>
+            <input type="text" name="email" class="form-control" placeholder="Email" value="{{ app.request.request.get('email') }}"/>
+
+
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Valider ma commande</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

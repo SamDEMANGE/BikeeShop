@@ -42,13 +42,16 @@
                             {{ produit.longDescription }}
 
                         </p>
+
                     </div>
 
 
                 </div>
-
-                <a href="{{path('basket')}}" class="btn btn-info">Ajouter au panier</a>
-
+                {% if produit.qte_stock != 0 %}
+                <a href="{{path('store_ajout_panier', {'id':produit.id})}}" class="btn btn-info">Ajouter au panier</a>
+                {% else %}
+                    <span class="label label-danger">En rupture de stock</span>
+                {% endif %}
 
 
             </div>

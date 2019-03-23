@@ -96,6 +96,9 @@ class ProductController extends AbstractController
     public function categList(string $urlPage, string $categ){
 
 
+
+
+
         $categ_list=$this->client->request('GET', $this->urlAPI.'categories/'
 
         );
@@ -157,6 +160,20 @@ class ProductController extends AbstractController
                 'keyword'=>$keyword,
                 'produits'=>$produits,
             ]);
+
+
+    }
+
+    /**
+     * @Route("/product/ajout/{id}", name="ajout_panier")
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function ajoutProduitPanier(int $id){
+
+
+        $produit=$this->client->request('POST',$this->urlAPI.'produit/ajout_panier/'.$id);
+
+        return $this->redirectToRoute('basket');
 
 
     }

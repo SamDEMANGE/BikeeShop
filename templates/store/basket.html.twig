@@ -14,7 +14,8 @@
 
                             <div class="caption">
                                 <h3>{{ produit.nom }}</h3>
-                                <select id="select{{ items }}">
+                                <h4>Quantité : {{ produit.quantite }}</h4>
+                                <select id="qte" class="form-control" style="display: none">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -27,45 +28,32 @@
                                     <option>10</option>
                                 </select>
 
+
+
+
                                 <p>
-                                    <span class="badge">{{ produit.prix }} €</span>
-                                    <a href="{{path('store_product_details', {'id':produit.id})}}" class="btn btn-default">Voir la fiche</a>
-                                    <a href="{{ path: }}">Supprimer l'article</a>
+                                    <span class="badge">{{ produit.prix * produit.quantite }} €</span>
+                                    <a href="{{path('store_product_details', {'id':produit.idprod})}}" class="btn btn-default">Voir la fiche</a>
+                                    <a href="{{ path('suppr_article_panier', {'id': produit.index}) }}">Supprimer l'article</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
 
-                {% for items in nuberItem %}
-                    <div>
-                        <img src="{{ image[items] }}">
-                        <h5 class="titre">{{ title[items] }}</h5>
-                        <p>{{ detail[items] }}</p>
-                        <h5 class="prix">{{ prix[items] }}</h5>
-                        <select id="select{{ items }}">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                        </select>
-                        <a id="suppr{{ items }}">Supprimer l'article</a>
 
-                    </div>
-                {% endfor %}
             </div>
 
 
 
             </div>
-        <input type="button" value="Commander">
-         <input type="button" value="Continuer mes achats">
-        {% block footer %}{{ parent() }}{% endblock %}
+    <h3 class="alert alert-info">Prix total : {{ prix_total }} €</h3>
+    <a href="{{ path('store_product_list', {'categorie': 'all'}) }}" class="btn btn-info">Continuer mes achats</a>
+    {% if prix_total != 0 %}
+    <a href="{{ path('valide_panier') }}" class="btn btn-success">Commander</a>
+    {% endif %}
+
+
+
 
 {% endblock %}
