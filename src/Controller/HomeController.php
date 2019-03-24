@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
-use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,9 +27,15 @@ class HomeController extends AbstractController
     private $client;
     private $urlAPI;
 
-    public function __construct()
+     /**
+      * @var \Swift_Mailer
+      */
+    private $mailer;
+
+    public function __construct(\Swift_Mailer $mailer)
     {
 
+        $this->mailer = $mailer;
         $this->client=new Client();
         $this->urlAPI='http://localhost/LP/BikeeShopAPI/public/';
     }
@@ -55,6 +59,36 @@ class HomeController extends AbstractController
         return $this->render('store/contact.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+    }
+
+    /**
+     * @Route("/mail", name="mail")du
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+
+    public function envoimail(Request $request){
+
+        $nom=$request->request->get('nom');
+        $email=$request->request->get('email');
+        $text=$request->request->get('message');
+
+        $text2=$nom . "(" . $email . ") vous envoie: " . $text;
+
+        $message = (new \Swift_Message($text2))
+            ->setFrom($email)
+            ->setTo('valentindechaume@gmail.com')
+            ->setBody(
+                $this->renderView(('email/contact.html.twig')),
+                'text/html'
+            );
+
+        $this->mailer->send($message);
+
+        $this->addFlash('success', 'Merci, votre message a été pris en compte !');
+
+        return $this->redirectToRoute('contact');
+
+
     }
 
     /**
