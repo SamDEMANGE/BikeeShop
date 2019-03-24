@@ -8,10 +8,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use GuzzleHttp\Client;
+
+
 
 /**
  * @Route("", name="")
@@ -26,10 +31,10 @@ class HomeController extends AbstractController
 
     public function __construct()
     {
+
         $this->client=new Client();
         $this->urlAPI='http://localhost/LP/BikeeShopAPI/public/';
     }
-
 
 
     /**
@@ -38,6 +43,16 @@ class HomeController extends AbstractController
     public function presentation()
     {
         return $this->render('store/presentation.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact()
+    {
+        return $this->render('store/contact.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -67,6 +82,7 @@ class HomeController extends AbstractController
 
         ]);
     }
+
 
 
 
