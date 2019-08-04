@@ -1,3 +1,3 @@
 # BikeeShop
 
-Run composer update after update
+Run composer update after download
